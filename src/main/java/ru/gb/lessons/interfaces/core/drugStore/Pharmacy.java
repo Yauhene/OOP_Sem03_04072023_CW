@@ -56,7 +56,10 @@ public class Pharmacy implements Iterable<Component>, Comparable<Pharmacy>, Mark
     }
     private int getPower (Pharmacy pharm) {
         int result = 0;
+        System.out.println("Поехали----------------------------------------");
         for (Component elem: pharm.getComponents()) {
+            System.out.println(elem);
+            System.out.println("result = " + result + "; getPower = " + elem.getPower());
             result += elem.getPower();
         }
         return result;
