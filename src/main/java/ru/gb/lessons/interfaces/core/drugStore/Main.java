@@ -23,8 +23,8 @@ public class Main {
 //        Интерфейс Serializable - отвечает за сериализацию объектов. Превращает объект в массив байтов, который потом
 //        можно собрать обратно при помощи десериализатора.
 
-        List<Marker> markers = new ArrayList<>();
-        Doctor doc1 = new Doctor(234, "Петрович", THERAPIST, "8(495)429-43-23");
+//        List<Marker> markers = new ArrayList<>();
+//        Doctor doc1 = new Doctor(234, "Петрович", THERAPIST, "8(495)429-43-23");
 //        markers.add().add();
 
 //        while (((Iterator<Component>) pharmacy1).hasNext()){

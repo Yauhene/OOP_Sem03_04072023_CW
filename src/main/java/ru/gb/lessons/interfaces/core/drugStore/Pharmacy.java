@@ -5,10 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Pharmacy implements Iterable<Component>, Comparable<Pharmacy>, Marker {
+    private int id;
     private List<Component> components;
     private int componentsCount;
 
     public Pharmacy() {
+        this.id = id;
         this.components = new ArrayList<>();
         this.componentsCount = 0;
     }
@@ -63,5 +65,9 @@ public class Pharmacy implements Iterable<Component>, Comparable<Pharmacy>, Mark
             result += elem.getPower();
         }
         return result;
+    }
+
+    public int getId() {
+        return id;
     }
 }
