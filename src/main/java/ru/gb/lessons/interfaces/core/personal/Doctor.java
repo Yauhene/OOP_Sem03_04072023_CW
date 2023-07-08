@@ -1,50 +1,45 @@
 package ru.gb.lessons.interfaces.core.personal;
 
-import ru.gb.lessons.interfaces.core.clients.DoctorSpecialities;
-import ru.gb.lessons.interfaces.core.clients.supports.Record;
-import ru.gb.lessons.interfaces.core.drugStore.Marker;
+import ru.gb.lessons.interfaces.core.clients.Animals;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.LinkedHashMap;
+public class Doctor extends MedWorker implements DoctorInterface{
+    public String name;
+    public int id;
+    public String specialization;
+    public String medSpecialist = "doctor";
+    protected final String CLASS_NAME = "The " + getClass().getSimpleName();
 
-import static ru.gb.lessons.interfaces.core.clients.DoctorSpecialities.THERAPIST;
+    public Doctor() {
 
-public class Doctor implements Marker {
-    protected int vetPersonID;
-    protected String fio;
-    protected DoctorSpecialities speciality;
-    protected String phoneNumber;
-//    protected vetPersonSchedule doctorSchedule;
-
-    public Doctor(int id, String fio, DoctorSpecialities speciality, String phone) {
-        vetPersonID = id;
-        this.fio = fio;
-        this.speciality = speciality;
-        this.phoneNumber = phone;
     }
-    public Doctor(int id) {
-        this(id, null, null, null);
-    }
-    public String getFIO () {
-        return this.fio;
-    }
-    public void setFIO (String fio) {
-        this.fio = fio;
-    }
-    public DoctorSpecialities getSpeciality () {
-        return this.speciality;
-    }
-    public void setSpeciality (DoctorSpecialities speciality) {
-        this.speciality = speciality;
-    }
-    protected int getDoctorID () { return this.vetPersonID; }
-    public void showDoctorBriefInfo () {}
-    public Record acceptPatient (int patientID) {
-        // Метод возвращает запись в карточку пациента
-        Record newRecord = new Record("", new Date());
-        return newRecord;
+    public Doctor(int id, String name, String specialization) {
+        this.id = id;
+        this.name = name;
+        this.specialization = specialization;
+        this.medSpecialist = medSpecialist;
     }
 
+    public void diagnosis(Animals patient) {
+        System.out.println("Доктор " + Doctor.this.getName() + " ставит диагноз для " + patient.getName());
+    }
+    public void giveInjections(Animals patient) {
+        System.out.println("Доктор " + Doctor.this.getName() + " ставит укол " + patient.getName());
+    }
+    public void makeBandages(Animals patient) {
+        System.out.println("Доктор " + Doctor.this.getName() + " делает перевязку " + patient.getName());
+    }
+
+    String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String toString() {
+        return CLASS_NAME + "{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specialization=" + specialization +
+                ", medSpecialist=" + medSpecialist +
+                '}';
+    }
 }

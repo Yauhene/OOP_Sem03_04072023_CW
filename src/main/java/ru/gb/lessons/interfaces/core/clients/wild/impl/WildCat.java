@@ -1,8 +1,6 @@
 package ru.gb.lessons.interfaces.core.clients.wild.impl;
 
 import ru.gb.lessons.interfaces.core.clients.Runnable;
-import ru.gb.lessons.interfaces.core.clients.Soundable;
-import ru.gb.lessons.interfaces.core.clients.Swimable;
 import ru.gb.lessons.interfaces.core.clients.owners.Owner;
 import ru.gb.lessons.interfaces.core.clients.wild.WildAnimal;
 
@@ -11,25 +9,25 @@ import java.time.LocalDate;
 /**
  Одна из реализаций дикого животного
  */
-public class WildCat extends WildAnimal implements Runnable, Swimable, Soundable {
+public class WildCat extends WildAnimal implements Runnable {
     public WildCat() {
+        rDesire = true;
+        flyDesire = false;
+        swimDesire = false;
+        speekDesire = true;
     }
+
     public WildCat(int id, int numberOfLimbs, LocalDate registrationDate, Owner owner) {
         super(id, numberOfLimbs, registrationDate, owner);
+        rDesire = true;
+        flyDesire = false;
+        swimDesire = false;
+        speekDesire = true;
     }
 
-    public int runs(){
+    @Override
+    public int run() {
         System.out.println("Бегает со скоростью 15 км/ч");
-        return 50;
-    }
-
-    @Override
-    public void sounds() {
-        System.out.println("- Мя-я-я-я-у! Ш-ш-ш-ш-ш... \n- Мя-я-я-я-у! Ш-ш-ш-ш-ш... ");
-    }
-
-    @Override
-    public int swims() {
-        return 3;
+        return 15;
     }
 }

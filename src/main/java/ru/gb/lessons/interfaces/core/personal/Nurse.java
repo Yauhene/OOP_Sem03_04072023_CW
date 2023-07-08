@@ -1,49 +1,47 @@
 package ru.gb.lessons.interfaces.core.personal;
 
-import ru.gb.lessons.interfaces.core.clients.DoctorSpecialities;
-import ru.gb.lessons.interfaces.core.clients.NurseSpecialities;
+import ru.gb.lessons.interfaces.core.clients.Animals;
 
-import java.time.LocalDate;
-import java.util.LinkedHashMap;
+public class Nurse implements NurseInterface{
+    public String name;
+    public int id;
+    public String specialization;
+    public String medSpecialist = "nurse";
+    protected final String CLASS_NAME = "The " + getClass().getSimpleName();
 
-import static ru.gb.lessons.interfaces.core.clients.DoctorSpecialities.THERAPIST;
+    public Nurse() {
 
-public class Nurse {
-    protected int vetPersonID;
-    protected String fio;
-    protected NurseSpecialities speciality;
-    protected String phoneNumber;
-    public Nurse (int id, String fio, NurseSpecialities speciality, String phone) {
-        vetPersonID = id;
-        this.fio = fio;
-        this.speciality = speciality;
-        this.phoneNumber = phone;
     }
-    public Nurse (int id) {
-        this(id, null, null, null);
+    public Nurse(int id, String name, String specialization) {
+        this.id = id;
+        this.name = name;
+        this.specialization = specialization;
+        this.medSpecialist = medSpecialist;
     }
-    public String getFIO () {
-        return this.fio;
+    public void giveInjections(Animals patient) {
+        System.out.println("Медсестра " + Nurse.this.getName() + " ставит укол " + patient.getName());
     }
-    public void setFIO (String fio) {
-        this.fio = fio;
+    public void makeBandages(Animals patient) {
+        System.out.println("Медсестра " + Nurse.this.getName() + " делает перевязку " + patient.getName());
     }
-    public NurseSpecialities getSpeciality () {
-        return this.speciality;
+    public void writePrescriptions(Animals patient) {
+        System.out.println("Медсестра " + Nurse.this.getName() + " выписывает рецепт " + patient.getName());
     }
-    public void setSpeciality (NurseSpecialities speciality) {
-        this.speciality = speciality;
-    }
-    protected int getNurseID () { return this.vetPersonID; }
-    public void showNurseBriefInfo () {}
-    public boolean makeInjection (int patientID, String drugName, double dose) {
-        return true;
-    }
-    public boolean putDrip (int patientID, String drugName, double volume) {
-        return true;
-    }
-    public boolean makeDressing (int patientID, String bodyPart, String drug) {
-        return true;
+    public void temperMeasuring(Animals patient) {
+        System.out.println("Медсестра " + Nurse.this.getName() + " измеряет температуру " + patient.getName());
     }
 
+    String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String toString() {
+        return CLASS_NAME + "{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specialization=" + specialization +
+                ", medSpecialist=" + medSpecialist +
+                '}';
+    }
 }

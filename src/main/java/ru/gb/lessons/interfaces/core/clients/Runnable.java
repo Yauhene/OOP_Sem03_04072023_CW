@@ -1,5 +1,6 @@
 package ru.gb.lessons.interfaces.core.clients;
 
 public interface Runnable {
-    int runs();
+    Boolean runDesire = null;
+    int run();
 }

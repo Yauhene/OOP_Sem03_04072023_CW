@@ -1,13 +1,13 @@
 package ru.gb.lessons.interfaces.core.drugStore;
 
 import org.w3c.dom.ls.LSSerializer;
-import ru.gb.lessons.interfaces.core.clients.DoctorSpecialities;
+//import ru.gb.lessons.interfaces.core.clients.DoctorSpecialities;
 import ru.gb.lessons.interfaces.core.personal.Doctor;
 
 import java.io.Serializable;
 import java.util.*;
 
-import static ru.gb.lessons.interfaces.core.clients.DoctorSpecialities.THERAPIST;
+//import static ru.gb.lessons.interfaces.core.clients.DoctorSpecialities.THERAPIST;
 
 public class Main {
     public static void main(String[] args) {

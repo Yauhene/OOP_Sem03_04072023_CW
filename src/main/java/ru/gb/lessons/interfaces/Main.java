@@ -1,14 +1,15 @@
 package ru.gb.lessons.interfaces;
 
+import ru.gb.lessons.interfaces.core.VetClinic;
 import ru.gb.lessons.interfaces.core.clients.home.impl.Cat;
 import ru.gb.lessons.interfaces.core.clients.home.impl.Dog;
 import ru.gb.lessons.interfaces.core.clients.owners.Owner;
 import ru.gb.lessons.interfaces.core.clients.wild.impl.Duck;
-import ru.gb.lessons.interfaces.core.clients.wild.impl.WildCat;
+import ru.gb.lessons.interfaces.core.clients.wild.impl.Fish;
+import ru.gb.lessons.interfaces.core.personal.Doctor;
+import ru.gb.lessons.interfaces.core.personal.Nurse;
 
 import java.time.LocalDate;
-import java.lang.Class;
-import java.util.Arrays;
 
 /**
  Небольшая шпаргалка по синтаксису java:
@@ -20,31 +21,83 @@ import java.util.Arrays;
  -! Если логика классов внутри пакета не позволяет назвать все в одно существительное, надо вложить один пакет в другой.
  */
 public class Main {
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) {
+
+
+        VetClinic iBolit = new VetClinic();
+
         Cat homeCat =
                 new Cat(2, "Tom", 4, LocalDate.of(2022, 4,13), new Owner("Ivanov Ivan"));
 
-        WildCat wildCat =
-                new WildCat(
+        ru.gb.lessons.interfaces.core.clients.wild.impl.WildCat wildCat =
+                new ru.gb.lessons.interfaces.core.clients.wild.impl.WildCat(
                         1, 4, LocalDate.of(2023, 1, 5), new Owner("incognito"));
+
+        Dog tuzik = new Dog(5,"Тузик",4,null,null);
+        Fish karas = new Fish();
 
         homeCat.hunt();
         wildCat.hunt();
 
-        Dog dog = new Dog();
-        dog.setName("Barbos");
+        Duck greenNeck = new Duck(15,2,"Cерая Шейка", null, null);
+        System.out.println();
 
-        System.out.println(homeCat);
-        System.out.println(dog);
+        homeCat.run();
+        homeCat.fly();
+        homeCat.sound();
+        homeCat.swim();
+        System.out.println();
 
-        Duck duck = new Duck();
-        System.out.println(duck);
-        String typeOfElements;
-        typeOfElements = String.valueOf(Class.forName(String.valueOf(duck.getClass().getInterfaces()[0].getTypeName())));
-        System.out.println(typeOfElements);
-        if (typeOfElements.contains("Flyable")) {
-            System.out.println("Утка бегает");
-        }
-        System.out.println(Arrays.asList(duck.getClass().getInterfaces()));
-        }
+        tuzik.run();
+        tuzik.fly();
+        tuzik.sound();
+        tuzik.swim();
+
+        System.out.println();
+        //System.out.println(tuzik.rDesire);
+
+        karas.run();
+        karas.fly();
+        karas.sound();
+        karas.swim();
+        System.out.println();
+
+        iBolit.addAnimal(karas);
+        iBolit.addAnimal(tuzik);
+        iBolit.addAnimal(homeCat);
+        iBolit.addAnimal(greenNeck);
+        iBolit.addAnimal(wildCat);
+
+        System.out.println("Дружный коллектив пациентов: ----------------------");
+        iBolit.printPatients();
+        System.out.println();
+        System.out.println("Готовы к полету: ----------------------");
+        iBolit.printFlyingPatients();
+        System.out.println();
+        System.out.println("Готовы плыть: ----------------------");
+        iBolit.printSwimingPatients();
+        System.out.println();
+        System.out.println("Готовы побегать: ----------------------");
+        iBolit.printRunningPatients();
+        System.out.println();
+        System.out.println("Они издают звуки: ----------------------");
+        iBolit.printSpeakingPatients();
+
+        Doctor pilulkin = new Doctor(1,"Пилюлькин", "терапевт");
+        System.out.println();
+        pilulkin.makeBandages(tuzik);
+        pilulkin.giveInjections(homeCat);
+        pilulkin.diagnosis(greenNeck);
+        System.out.println();
+
+        Nurse klizma = new Nurse(8,"Клизменко", "терапевт");
+        System.out.println();
+        klizma.giveInjections(homeCat);
+        klizma.makeBandages(homeCat);
+        klizma.temperMeasuring(greenNeck);
+        klizma.writePrescriptions(tuzik);
+
+
+
     }
+}
